@@ -17,26 +17,48 @@
         <div class="text-login">
           Preencha os campos abaixo e realize seu cadastro.
         </div>
-        <form>
+        <form method="POST" action="{{route('register_action')}}">
+            @csrf
           <div class="name-area">
             <div class="name-label">Nome</div>
-            <input type="text" placeholder="Digite o seu nome" />
+            <input type="text" class="@error('name') is-invalid @enderror" placeholder="Digite o seu nome" id="name" name="name" value="{{@old('name')}}"/>
+            @error('name')
+                <div class="errorTeste">
+                    {{$message}}
+                </div>
+            @enderror
           </div>
           <div class="email-area">
             <div class="email-label">E-mail</div>
-            <input type="email" placeholder="Digite o seu e-mail" />
+            <input type="email" class="@error('email') is-invalid @enderror" placeholder="Digite o seu e-mail"  id="email" name="email" value="{{@old('email')}}">
+            @error('email')
+                <div class="errorTeste">
+                    {{$message}}
+                </div>
+            @enderror
           </div>
           <div class="password-area">
             <div class="password-label">Senha</div>
-            <div class="password-input-area">
-              <input type="password" placeholder="Digite a sua senha" />
-              <img src="assets/icons/eyeIcon.png" alt="Ícone mostrar senha" />
-            </div>
+            <x-form.password-input name='password' placeholder='Digite a sua senha' id='confimeSenha' />
+            @error('password')
+                <div class="errorTeste">
+                    {{$message}}
+                </div>
+            @enderror
           </div>
-          <button class="login-button">Cadastrar</button>
+          <div class="password-area">
+            <div class="password-label">Confirme a senha</div>
+            <x-form.password-input name='password_confirmation' placeholder='Digite a sua senha Novamente' id='confimeSenhaNova' />
+            @error('password_confirmation')
+                <div class="errorTeste">
+                    {{$message}}
+                </div>
+            @enderror
+          </div>
+          <button type="submit" class="login-button">Cadastrar</button>
         </form>
         <div class="register-area">
-          Já tem cadastro? <a href="{{route('login')}}">Fazer Login</a>
+            Ja possui uma conta? <a href="{{route('login')}}">Faça login</a>
         </div>
       </div>
       <div class="terms">
