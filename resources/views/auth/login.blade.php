@@ -1,60 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/style.css" />
     <link rel="stylesheet" href="assets/loginSignUpStyle.css" />
 
     <title>B7Store - Login</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <a href="index.html" class="back-button">← Voltar</a>
     <div class="login-page">
-      <div class="login-area">
-        <h3 class="login-title">B7Store</h3>
-        <div class="text-login">
-          Use as suas credenciais para realizar o Login.
-        </div>
-        <form method="POST" action="{{route('login_action')}}">
-            @csrf
-            @if($message)
-                <p class="errorTeste">{{$message}}</p>
-            @endif
-          <div class="email-area">
-            <div class="email-label">E-mail</div>
-            <input type="email" placeholder="Digite o seu e-mail"  name="email" id="email" required/>
-            @error('email')
-                <div class="errorTeste">
-                    {{$message}}
-                </div>
-            @enderror
-          </div>
-          <div class="password-area">
-            <div class="password-label">
-              <div class="password-area-text">Senha</div>
-              <a href="{{route('forgot.password')}}" class="password-area-forgot">Esqueceu sua senha?</a>
+        <div class="login-area">
+            <h3 class="login-title">B7Store</h3>
+            <div class="text-login">
+                Use as suas credenciais para realizar o Login.
             </div>
-            <x-form.password-input placeholder="Digite a sua senha" name="password" id="password" required/>
-            @error('password')
-                <div class="errorTeste">
-                    {{$message}}
+
+            <form method="POST" action="{{ route('login_action') }}">
+                @csrf
+                @if (isset($message))
+                    <p class="errorTeste">{{ $message }}</p>
+                @endif
+                <div class="email-area">
+                    <div class="email-label">E-mail</div>
+                    <input type="email" placeholder="Digite o seu e-mail" name="email" id="email" required />
+                    @error('email')
+                        <div class="errorTeste">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
-            @enderror
-          </div>
-          <button class="login-button">Entrar</button>
-        </form>
-        <div class="register-area">
-          Ainda não tem cadastro? <a href="{{route('register')}}">Cadastre-se</a>
+                <div class="password-area">
+                    <div class="password-label">
+                        <div class="password-area-text">Senha</div>
+                        <a href="{{ route('forgot.password') }}" class="password-area-forgot">Esqueceu sua senha?</a>
+                    </div>
+                    <x-form.password-input placeholder="Digite a sua senha" name="password" id="password" required />
+                    @error('password')
+                        <div class="errorTeste">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <button class="login-button">Entrar</button>
+            </form>
+            <div class="register-area">
+                Ainda não tem cadastro? <a href="{{ route('register') }}">Cadastre-se</a>
+            </div>
         </div>
-      </div>
-      <div class="terms">
-        Ao continuar, você concorda com os <a href="">Termos de Uso</a> e a
-        <a href="">Política de Privacidade</a>, e também, em receber
-        comunicações via e-mail e push de todos os nossos parceiros.
-      </div>
+        <div class="terms">
+            Ao continuar, você concorda com os <a href="">Termos de Uso</a> e a
+            <a href="">Política de Privacidade</a>, e também, em receber
+            comunicações via e-mail e push de todos os nossos parceiros.
+        </div>
     </div>
     <x-base.footer />
-  </body>
+</body>
+
 </html>
