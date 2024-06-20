@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Advertise;
+use App\Models\AdvertiseImage;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,8 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call(StateSeeder::class);
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Teste Usere',
+            'email' => 'teste@teste.com',
+            'password' => 123456,
         ]);
     }
 }

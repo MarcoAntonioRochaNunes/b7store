@@ -11,15 +11,11 @@
             </div>
         @endif
         {{-- @dd(auth::user()); --}}
-        @php
-            $usuario = auth::user();
-            isset($usuario) ? ($usuario = $usuario->id) : null;
 
-        @endphp
         <div class="ad-image p_relative"
             style="background-image: url('{{ $advertise->images->where('featured', 1)->first()->url ?? 'https://placehold.it/300x300' }} ')">
 
-            @if ($advertise->user_id == $usuario && empty($canEdit))
+            @if (auth::user() && $advertise->user_id == auth::user()->id  && empty($canEdit) )
                 <span class="tag">Meu Anúncio</span>
             @endif
         </div>

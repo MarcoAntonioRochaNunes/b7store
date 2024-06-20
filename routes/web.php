@@ -9,7 +9,7 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-
+Route::get('ad/{slug}', [AdController::class, 'show'])->name('ad.show');
 
 Route::middleware(['auth'])->group(function () {
 

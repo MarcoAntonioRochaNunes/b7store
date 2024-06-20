@@ -1,5 +1,7 @@
 :root {
     --footerHeight: 92px;
+
+    --cor-principal: #5c7bfa;
 }
 
 /*
@@ -51,6 +53,7 @@
     flex-direction: column;
     align-items: center;
     padding-bottom: 30px;
+    border-radius: 15px;
 }
 .login-title {
     color: #5c7bfa;
@@ -96,6 +99,8 @@ form {
     font-weight: 400;
     line-height: normal;
     outline: 0;
+    border: 1px solid #96a3ab;
+    border-radius: 10px;
 }
 .email-area {
     margin-top: 24px;
@@ -131,6 +136,7 @@ form {
     font-weight: 500;
     border: 0;
     cursor: pointer;
+    border-radius: 10px;
 }
 .register-area {
     margin-top: 43px;
