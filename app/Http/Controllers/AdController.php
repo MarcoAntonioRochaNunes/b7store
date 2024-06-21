@@ -34,6 +34,8 @@ class AdController extends Controller
         $ad->views++;
         $ad->save();
 
-        return view('single-ad', compact('ad'));
+        $related = Advertise::where('category_id', $ad->category_id)->where('state_id', $ad->state_id)->limit(4)->get();
+
+        return view('single-ad', compact('ad', 'related'));
     }
 }

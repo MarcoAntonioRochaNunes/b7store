@@ -22,30 +22,7 @@
     <x-base.header />
     <main>
       <div class="ad-area">
-        <div class="ad-area-left">
-          <div
-            class="main-photo"
-            style="background-image: url('/assets/adFusca/fusca.png')"
-          ></div>
-          <div class="secundary-photos">
-            <div
-              class="secundary-image"
-              style="background-image: url('/assets/adFusca/fusca2.png')"
-            ></div>
-            <div
-              class="secundary-image"
-              style="background-image: url('/assets/adFusca/fusca3.png')"
-            ></div>
-            <div
-              class="secundary-image"
-              style="background-image: url('/assets/adFusca/fusca4.png')"
-            ></div>
-            <div
-              class="secundary-image"
-              style="background-image: url('/assets/adFusca/fusca5.png')"
-            ></div>
-          </div>
-        </div>
+        <livewire:gallery :images="$ad->images" />
 
         <div class="ad-area-right">
           <div class="categories-state">{{$ad->state->name}} / {{$ad->category->name}}</div>
@@ -70,38 +47,17 @@
       <div class="ads">
         <div class="ads-title">Anúncios relacionados</div>
         <div class="ads-area">
-          <div class="ad-item">
-            <div
-              class="ad-image"
-              style="background-image: url('/assets/adFusca/fusca6.png')"
-            ></div>
-            <div class="ad-title">Volkswagen Fusca 67 - Equipado</div>
-            <div class="ad-price">R$ 33.990,00</div>
-          </div>
-          <div class="ad-item">
-            <div
-              class="ad-image"
-              style="background-image: url('/assets/adFusca/fusca7.png')"
-            ></div>
-            <div class="ad-title">Volkswagen Fusca 67 - Extra</div>
-            <div class="ad-price">R$ 36.900,00</div>
-          </div>
-          <div class="ad-item">
-            <div
-              class="ad-image"
-              style="background-image: url('/assets/adFusca/fusca8.png')"
-            ></div>
-            <div class="ad-title">Volkswagen Fusca 68</div>
-            <div class="ad-price">R$ 34.450,00</div>
-          </div>
-          <div class="ad-item">
-            <div
-              class="ad-image"
-              style="background-image: url('/assets/adFusca/fusca9.png')"
-            ></div>
-            <div class="ad-title">Volkswagen Fusca 66</div>
-            <div class="ad-price">R$ 35.450,00</div>
-          </div>
+            @foreach ($related as $ads )
+            {{-- @dd($ads) --}}
+                <div class="ad-item">
+                <div
+                    class="ad-image"
+                    style="background-image: url('/assets/adFusca/fusca6.png')"
+                ></div>
+                <div class="ad-title">{{$ads->title}}</div>
+                <div class="ad-price">R$ {{number_format($ad->price, 2, ',','.')}}</div>
+                </div>
+            @endforeach
         </div>
       </div>
     </main>
