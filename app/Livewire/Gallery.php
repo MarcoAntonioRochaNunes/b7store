@@ -18,7 +18,7 @@ class Gallery extends Component
     {
 
         $this->images = $images;
-        $this->featuredUrl = $images->where('featured', true)->first()->url;
+        $this->featuredUrl = $images->where('featured', true)->first()->url ?? 'http://placehold.it/500x500';
 
     }
 

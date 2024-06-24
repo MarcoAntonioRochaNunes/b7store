@@ -34,7 +34,14 @@ class AdController extends Controller
         $ad->views++;
         $ad->save();
 
-        $related = Advertise::where('category_id', $ad->category_id)->where('state_id', $ad->state_id)->limit(4)->get();
+        $related = Advertise::where('category_id', $ad->category_id)
+            ->where('state_id', $ad->state_id)
+            ->where('id', '<>', $ad->id)
+            ->orderBy('created_at', 'desc')
+            ->orderBy('views', 'desc')
+            ->with('images')
+            ->limit(4)
+            ->get();
 
         return view('single-ad', compact('ad', 'related'));
     }

@@ -37,9 +37,4 @@ class DashboardController extends Controller
         return view('dashboard.myAds', compact('advertises'));
     }
 
-    public function deleteAd()
-    {
-
-    }
-
 }

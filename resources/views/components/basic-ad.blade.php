@@ -1,4 +1,4 @@
-<div class="my-ad-item">
+<a href="{{ route('ad.show', ['slug' => $advertise->slug]) }}" class="my-ad-item">
     <div class="ad-image-area">
         @if (!empty($canEdit))
             <div class="ad-buttons">
@@ -15,14 +15,14 @@
         <div class="ad-image p_relative"
             style="background-image: url('{{ $advertise->images->where('featured', 1)->first()->url ?? 'https://placehold.it/300x300' }} ')">
 
-            @if (auth::user() && $advertise->user_id == auth::user()->id  && empty($canEdit) )
+            @if (auth::user() && $advertise->user_id == auth::user()->id && empty($canEdit))
                 <span class="tag">Meu Anúncio</span>
             @endif
         </div>
     </div>
     <div class="ad-title">{{ $advertise->title }}</div>
-    <div class="ad-price">R$ {{ number_format($advertise->price, 2, ',', '.') }}</div>
-</div>
+    <div class="ad-price">R$ {{ $advertise->getPriceFomattedAttribute() }}</div>
+</a>
 
 <style>
     .tag {

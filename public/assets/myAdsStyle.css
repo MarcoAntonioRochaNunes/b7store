@@ -1,6 +1,10 @@
 :root {
     --footerHeight: 92px;
 }
+
+a {
+    text-decoration: none;
+}
 .my-ads-page {
     width: 100%;
     min-height: calc(100vh - var(--footerHeight));
